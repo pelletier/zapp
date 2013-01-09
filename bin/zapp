@@ -1,3 +1,15 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
+require 'commander/import'
 require 'zapp'
+
+program :version, Zapp::VERSION
+program :description, Zapp::DESCRIPTION
+
+command :new do |c|
+  c.syntax = "zapp #{Zapp::Command::New::SYNTAX}"
+  c.description = Zapp::Command::New::DESCRIPTION
+
+  c.when_called Zapp::Command::New, :execute
+end
